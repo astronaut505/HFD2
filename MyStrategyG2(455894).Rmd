@@ -4,7 +4,6 @@ We implement a mean-reverting techniques on CAD and XAU. Strategy involves the c
 
 The parameters were also derived from GridSearch, to get best result based on CR and SR.
 
-
 ```{r}
 library(xts)
 library(chron)
