@@ -352,6 +352,19 @@ display: none;
 </div>
 
 
+<p><strong><em>Introduction</em></strong> The presented R script
+implements a quantitative trading strategy for the second assets group,
+utilizing mean-reverting techniques on currency (CAD) and precious metal
+(XAU) pairs. The strategy involves the calculation of short-term EMAs,
+medium-term SMAs, and long-term EMAs, along with volatility measures.
+Positions are then determined based on deviations from these indicators.
+The script evaluates the strategy’s performance for different quarters,
+focusing on net profit, net Sharpe Ratio (SR), and net Calmar Ratio
+(CR). The analysis aims to identify optimal trading periods and assess
+the strategy’s risk-adjusted returns over time. The provided
+visualizations and statistics offer insights into the strategy’s
+effectiveness and guide decision-making for potential future
+refinements.</p>
 <pre class="r"><code>library(xts)</code></pre>
 <pre><code>## Loading required package: zoo</code></pre>
 <pre><code>## 
@@ -676,6 +689,29 @@ head(data)</code></pre>
 ## 4         4.948718  345907.0  343205.0   9.330208
 ## 5         4.820513 -374970.2 -377602.2 -10.739184
 ## 6         5.000000 -313790.5 -316520.5  -5.245743</code></pre>
+<p>Based on the provided data for the second assets group, let’s rank
+the quarters based on net profit, net Sharpe Ratio (SR), and net Calmar
+Ratio (CR) to identify the best three quarters:</p>
+<p>Net Profit: Q2 2022: $345,907.0 Q3 2021: $546,483.3 Q1 2021:
+-$181,454.0 (Note: Negative net profit) Net Sharpe Ratio (SR): Q3 2021:
+1.70 Q2 2022: 1.04 Q1 2021: -0.48 (Note: Negative net SR) Net Calmar
+Ratio (CR): Q3 2021: 3.66 Q2 2022: 1.60 Q1 2021: -0.91 (Note: Negative
+net CR)</p>
+<p><strong><em>Conclusion:</em></strong> Q3 2021: This quarter stands
+out as the best across all three metrics - highest net profit, net
+Sharpe Ratio, and net Calmar Ratio. It demonstrates robust positive
+performance with good risk-adjusted returns.</p>
+<p>Q2 2022: While not as strong as Q3 2021, Q2 2022 performs well,
+especially in terms of net profit and net Sharpe Ratio. It is the
+second-best quarter based on these metrics.</p>
+<p>Q1 2021: Despite having a negative net profit and negative net Sharpe
+Ratio, it is included in the top three due to its relatively better net
+Calmar Ratio compared to other quarters.</p>
+<p>It’s important to note that negative values for net profit, net SR,
+and net CR in Q1 2021 indicate challenges in generating positive returns
+and managing risk during that quarter. Consider further analysis to
+understand the factors contributing to negative performance and explore
+potential improvements for future strategies.</p>
 </div>
 
 
