@@ -359,18 +359,22 @@ strategy. The strategy involves calculating various indicators, such as
 EMA50 - EMA180, and EMA 50 - EMA200 and making trading decisions based
 on the relative positions of these indicators.</p>
 <p>I obtained these EMA based on that Grid Search I applied to get the
-best results.</p>
+best results. Results from the GridSearch (42, 170) was relatively close
+to GoldenCross, and DeathCross. So I used them for better
+interpretability.</p>
 <pre class="r"><code>CalmRatio &lt;- function(x, # x = series of returns
                           # scale parameter = Nt
                           scale) {
   scale * mean(coredata(x), na.rm = TRUE) / 
     maxdrawdown(cumsum(x))$maxdrawdown
 }
-Sys.setenv(TZ = &#39;America/New_York&#39;)</code></pre>
-<pre class="r"><code>mySR &lt;- function(x, scale) {
+
+mySR &lt;- function(x, scale) {
   sqrt(scale) * mean(coredata(x), na.rm = TRUE) / 
     sd(coredata(x), na.rm = TRUE)
-} </code></pre>
+}
+
+Sys.setenv(TZ = &#39;America/New_York&#39;)</code></pre>
 <pre class="r"><code>### Main Looop
 for (selected_quarter in c(&quot;2021_Q1&quot;, &quot;2021_Q3&quot;, &quot;2021_Q4&quot;, 
                            &quot;2022_Q2&quot;, &quot;2022_Q4&quot;, 
@@ -590,9 +594,13 @@ head(data)</code></pre>
 ## 6  21594.80  15294.80  7.3550295</code></pre>
 <p><strong><em>Conclusion</em></strong> To determine the best quarters,
 you can consider various performance metrics such as net profit, Sharpe
-Ratio (SR), and Calmar Ratio (CR). Let’s rank the quarters based on
-their net profit, net SR, and net CR. Below are the top three quarters
-for each metric:</p>
+Ratio (SR), and Calmar Ratio (CR). To rank the quarters based on their
+net profit, net SR, and net CR. Below are the top three quarters for
+each metric:</p>
+<p>Net Profit: Q4 2021: $51,508.05 Q1 2021: $23,173.60 Q3 2021:
+-$6,263.56 (Note: Negative net profit) Net Sharpe Ratio (SR): Q4 2021:
+3.68 Q1 2021: 1.57 Q1 2023: 1.00 Net Calmar Ratio (CR): Q4 2021: 13.16
+Q1 2021: 6.47 Q1 2023: 2.70</p>
 <p>These rankings provide insights into the best quarters based on
 different criteria. Q4 2021 consistently ranks high across all metrics,
 indicating strong overall performance. However, it’s crucial to consider

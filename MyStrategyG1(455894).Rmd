@@ -3,8 +3,7 @@
 I analyzed data for different quarters using a Momentum trading strategy. The strategy involves calculating various indicators, such as EMA50 - EMA180, and EMA 50 - EMA200 and making trading decisions based on the relative positions of these indicators.
 
 
-I obtained these EMA based on that Grid Search I applied to get the best results.
-
+I obtained these EMA based on that Grid Search I applied to get the best results. Results from the GridSearch (42, 170) was relatively close to GoldenCross, and DeathCross. So I used them for better interpretability.
 
 ```{r setup, include=FALSE}
 library(xts)
@@ -34,14 +33,13 @@ CalmRatio <- function(x, # x = series of returns
   scale * mean(coredata(x), na.rm = TRUE) / 
     maxdrawdown(cumsum(x))$maxdrawdown
 }
-Sys.setenv(TZ = 'America/New_York')
-```
 
-```{r}
 mySR <- function(x, scale) {
   sqrt(scale) * mean(coredata(x), na.rm = TRUE) / 
     sd(coredata(x), na.rm = TRUE)
-} 
+}
+
+Sys.setenv(TZ = 'America/New_York')
 ```
 
 
@@ -270,6 +268,19 @@ head(data)
 
 
 ***Conclusion***
-To determine the best quarters, you can consider various performance metrics such as net profit, Sharpe Ratio (SR), and Calmar Ratio (CR). Let's rank the quarters based on their net profit, net SR, and net CR. Below are the top three quarters for each metric:
+To determine the best quarters, you can consider various performance metrics such as net profit, Sharpe Ratio (SR), and Calmar Ratio (CR). To rank the quarters based on their net profit, net SR, and net CR. Below are the top three quarters for each metric:
+
+Net Profit:
+Q4 2021: $51,508.05
+Q1 2021: $23,173.60
+Q3 2021: -$6,263.56 (Note: Negative net profit)
+Net Sharpe Ratio (SR):
+Q4 2021: 3.68
+Q1 2021: 1.57
+Q1 2023: 1.00
+Net Calmar Ratio (CR):
+Q4 2021: 13.16
+Q1 2021: 6.47
+Q1 2023: 2.70
 
 These rankings provide insights into the best quarters based on different criteria. Q4 2021 consistently ranks high across all metrics, indicating strong overall performance. However, it's crucial to consider the metrics collectively and understand the trade-offs between risk and return when evaluating the effectiveness of the trading strategy.

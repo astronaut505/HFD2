@@ -352,19 +352,14 @@ display: none;
 </div>
 
 
-<p><strong><em>Introduction</em></strong> The presented R script
-implements a quantitative trading strategy for the second assets group,
-utilizing mean-reverting techniques on currency (CAD) and precious metal
-(XAU) pairs. The strategy involves the calculation of short-term EMAs,
-medium-term SMAs, and long-term EMAs, along with volatility measures.
-Positions are then determined based on deviations from these indicators.
-The script evaluates the strategy’s performance for different quarters,
-focusing on net profit, net Sharpe Ratio (SR), and net Calmar Ratio
-(CR). The analysis aims to identify optimal trading periods and assess
-the strategy’s risk-adjusted returns over time. The provided
-visualizations and statistics offer insights into the strategy’s
-effectiveness and guide decision-making for potential future
-refinements.</p>
+<p><strong><em>Introduction</em></strong> We implement a mean-reverting
+techniques on CAD and XAU. Strategy involves the calculation of
+short-term EMAs, medium-term SMAs, and long-term EMAs, also volatility
+measures. Positions are then determined based on deviations from these
+indicators. Analysis aims to identify optimal trading periods and assess
+the strategy’s risk-adjusted returns over time.</p>
+<p>The parameters were also derived from GridSearch, to get best result
+based on CR and SR.</p>
 <pre class="r"><code>library(xts)</code></pre>
 <pre><code>## Loading required package: zoo</code></pre>
 <pre><code>## 
